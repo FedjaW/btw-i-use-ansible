@@ -1,0 +1,16 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+  - name: Update cache (I want all my repos be up to date)
+    apt:
+      update_cache: true
+    tags: 
+    - zsh
+    - node
+  tasks:
+  - name: Include task zsh
+    ansible.builtin.import_tasks:
+      file: tasks/zsh.yml
+  - name: Include task node
+    ansible.builtin.import_tasks:
+      file: tasks/node.yml
