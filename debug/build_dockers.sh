@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t virgin_machine .
+cd ..
+docker build -t virgin_machine -f debug/Dockerfile .

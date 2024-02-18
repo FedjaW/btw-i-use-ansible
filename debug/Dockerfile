@@ -11,4 +11,6 @@ RUN apt-get -y install git
 RUN apt-get -y install curl
 
 WORKDIR /usr/local/bin
-COPY .. .
+COPY . . 
+
+CMD [ "sh", "-c", "ansible-playbook local.yml" ]

@@ -15,4 +15,5 @@ Grab a coffee, come back and voilà, your development environment is set up and 
 - cd into debug
 - run `./build_dockers.sh`
 - run `./start_dockers.sh`
-- run `ansible-pull -U https://github.com/FedjaW/btw-i-use-ubuntu`
+
+It will automatically execute `asible-playbook local.yml`.
