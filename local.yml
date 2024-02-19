@@ -9,8 +9,6 @@
     - node
   tasks:
   - name: Include task zsh
-    ansible.builtin.import_tasks:
-      file: tasks/zsh.yml
+    import_tasks: tasks/zsh.yml
   - name: Include task node
-    ansible.builtin.import_tasks:
-      file: tasks/node.yml
+    import_tasks: tasks/node.yml
