@@ -13,4 +13,4 @@ RUN apt-get -y install curl
 WORKDIR /usr/local/bin
 COPY . . 
 
-CMD [ "sh", "-c", "ansible-playbook local.yml" ]
+CMD [ "sh", "-c", "ansible-playbook local.yml; zsh" ]

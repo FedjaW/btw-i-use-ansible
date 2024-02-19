@@ -1,16 +1,13 @@
 # How to
 
-Make sure you have
-
-- git
-- ansible
-
-installed, then run:
+Make sure you have `git` and `ansible` installed, then run:
 `ansible-pull -U https://github.com/FedjaW/btw-i-use-ubuntu`
 
-Grab a coffee, come back and voilà, your development environment is set up and ready to use
+Grab a coffee, come back and voilà, your development environment is set up and ready to use.
 
 ## For debugging
+
+- you need to have `docker` installed
 
 - cd into debug
 - run `./build_dockers.sh`
@@ -29,9 +26,10 @@ It will automatically execute `asible-playbook local.yml`.
 ## Cool command to inspect processes on ubuntu
 
 execute: `zsh`
-
 execute: `ps -o pid,ppid= -C zsh`
-
 execute: `zsh`
-
+execute: `ps -o pid,ppid= -C zsh`
+execute: `exit`
+execute: `ps -o pid,ppid= -C zsh`
+execute: `exit`
 execute: `ps -o pid,ppid= -C zsh`
