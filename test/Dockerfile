@@ -10,4 +10,5 @@ RUN apt-get -y install curl
 WORKDIR /usr/local/bin
 COPY . . 
 
+# tag "node" is missing because it takes to long to install
 CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system\"; zsh" ]

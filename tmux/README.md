@@ -45,7 +45,6 @@ Usually you do not need this but for the record:
 `<prefix>-v` will go to the prev window
 `<prefix>-1` will go to the first window
 
-
 ## Nice stuff
 
 For Session
