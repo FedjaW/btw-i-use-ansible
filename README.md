@@ -1,7 +1,7 @@
 # How to
 
 Make sure you have `git` and `ansible` installed, then run:
-`ansible-pull -U https://github.com/FedjaW/btw-i-use-ubuntu`
+`ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible`
 
 Grab a coffee, come back and voilà, your development environment is set up and ready to use.
 
