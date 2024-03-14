@@ -1,0 +1,20 @@
+- name: Install stow
+  apt: name=stow
+  tags:
+  - dotfiles
+
+- name: Copy dotfiles
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: .dotfiles/
+    dest: $HOME/.dotfiles
+  tags:
+  - dotfiles
+
+- name: Stow dotfiles
+  become: true
+  become_user: root
+  shell: cd $HOME/.dotfiles && chmod +x stow.sh && ./stow.sh
+  tags:
+    - dotfiles 

@@ -7,8 +7,15 @@
     tags: 
     - zsh
     - node
+    - system
+    - stow
+    - dotfiles
   tasks:
   - name: Include task zsh
     import_tasks: tasks/zsh.yml
   - name: Include task node
     import_tasks: tasks/node.yml
+  - name: Include task system
+    import_tasks: tasks/system.yml
+  - name: Include task dotfiles
+    import_tasks: tasks/dotfiles.yml

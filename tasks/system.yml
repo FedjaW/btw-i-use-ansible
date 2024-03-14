@@ -1,0 +1,9 @@
+- name: Install System Tooling
+  apt:
+    name: 
+    - tmux
+    - curl
+    - tldr
+  tags:
+  - tmux
+  - system
