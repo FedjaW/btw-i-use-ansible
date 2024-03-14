@@ -4,6 +4,7 @@
     - tmux
     - curl
     - tldr
+    - fzf
+    - vim
   tags:
-  - tmux
   - system

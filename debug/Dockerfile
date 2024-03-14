@@ -8,7 +8,10 @@ RUN apt-get -y install git
 RUN apt-get -y install curl
 
 WORKDIR /usr/local/bin
-COPY . . 
+COPY ./.dotfiles/ ./.dotfiles/
+COPY ./tasks/ ./tasks/
+COPY ./tmux/ ./tmux/
+COPY ./local.yml .
 
 # tag "node" is missing because it takes to long to install
 CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system\"; zsh" ]
