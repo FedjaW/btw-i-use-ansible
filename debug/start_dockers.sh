@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -it virgin_machine
+docker run -it --rm virgin_machine
