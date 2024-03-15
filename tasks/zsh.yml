@@ -10,13 +10,15 @@
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
   tags: 
   - zsh
+- name: Delete .zhrc, have it in .dotfiles
+  shell: rm -rf ~/.zshrc
+  become: true
+  become_user: root
+  tags: 
+  - zsh
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags: 
-  - zsh
-- name: Update our zshrc
-  shell: sed -i 's/(git/(git zsh-autosuggestions/' ~/.zshrc
   tags: 
   - zsh

@@ -5,4 +5,10 @@
     src: scripts/
     dest: $HOME/scripts
   tags:
-    - scripts
+  - scripts
+- name: Give scripts execute permissions
+  become: true
+  become_user: root
+  shell: cd $HOME/scripts && chmod +x ./tmux-sessionizer.sh && chmod +x ./tmux-cht.sh
+  tags:
+  - scripts

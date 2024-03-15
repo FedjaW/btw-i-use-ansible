@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 session=$(find ~ -mindepth 1 -maxdepth 1 -type d | fzf)
 session_name=$(basename "$session" | tr . _)

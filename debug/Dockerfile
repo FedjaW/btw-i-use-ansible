@@ -9,6 +9,7 @@ RUN apt-get -y install curl
 
 WORKDIR /usr/local/bin
 COPY ./.dotfiles/ ./.dotfiles/
+COPY ./scripts/ ./scripts/
 COPY ./tasks/ ./tasks/
 COPY ./tmux/ ./tmux/
 COPY ./local.yml .
