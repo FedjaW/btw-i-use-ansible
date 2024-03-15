@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Author: Friedrich Wilms
+# Date Created: 05.2.2024
+# Date Modified: 15.2.2024
+
+# Description:
+# Checks the list below for a birthday today - prints it to the console
+
+# Usage:
+# ./birthday
+
+birthdays="
+Alex-Fink_06.11				\
+Friedrich-Wilms_05.01 		\
+Katharina-Klassen_06.01 	\
+Jakob-Wilms_25.02 		
+"
+
+today=$(date +%d.%m)
+for i in $birthdays; do
+	birthday="$(echo $i | cut -d'_' -f2)"
+    	if [ $today = $birthday ]
+	then 
+		IFS="-"
+		name="$(echo $i | cut -d'_' -f1)"
+		echo "$name hat heute Geburtstag"
+	fi
+done
+
+exit 0

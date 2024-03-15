@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Author: Friedrich Wilms
+# Date Created: 5.2.2024
+# Date Modified: 5.2.2024
+
+# Description:
+# Creates a backup of the home dir
+
+# Usage:
+# backup_script
+
+echo ${USER,^}
+echo "I will now backup your home directory, $HOME"
+currentdir=$(pwd)
+echo "You are running this script from $currentdir"
+echo "Therefore, I will save the backup in $currentdir"
+tar -cf $currentdir/"$(date +%d-%m-%Y_%H-%M-%S)".tar $HOME/* 2>/dev/null
+echo "Backup completed successfully"
+
+exit 0
