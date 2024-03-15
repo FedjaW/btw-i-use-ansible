@@ -14,4 +14,4 @@ COPY ./tmux/ ./tmux/
 COPY ./local.yml .
 
 # tag "node" is missing because it takes to long to install
-CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system\"; zsh" ]
+CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system,scripts\"; zsh" ]

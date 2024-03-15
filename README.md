@@ -25,11 +25,11 @@ It will automatically execute `asible-playbook local.yml`.
 
 ## Cool command to inspect processes on ubuntu
 
-execute: `zsh`
-execute: `ps -o pid,ppid= -C zsh`
-execute: `zsh`
-execute: `ps -o pid,ppid= -C zsh`
-execute: `exit`
-execute: `ps -o pid,ppid= -C zsh`
-execute: `exit`
+execute: `zsh`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `zsh`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `exit`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `exit`\
 execute: `ps -o pid,ppid= -C zsh`

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [[ -z $STOW_FOLDERS ]]; then
     STOW_FOLDERS="zsh,tmux"
@@ -9,4 +9,4 @@ do
     echo "stow $folder"
     stow -D $folder 
     stow $folder 
-done 
+done

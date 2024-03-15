@@ -81,7 +81,7 @@ READ THE FUCKING MANUAL!
 ## Special candy
 
 Usability Tip
-<prefix>-[ goes into vi mode
+`<prefix>-[` goes into vi mode
 
 This for the copy/paste in tmuxrc
 

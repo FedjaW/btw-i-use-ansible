@@ -1,0 +1,8 @@
+- name: Copy scripts
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: scripts/
+    dest: $HOME/scripts
+  tags:
+    - scripts
