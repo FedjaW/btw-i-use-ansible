@@ -1,0 +1,4 @@
+- name: Intall neovim
+  apt: name=neovim
+  tags:
+  - nvim
