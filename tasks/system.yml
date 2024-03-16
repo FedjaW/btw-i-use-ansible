@@ -1,10 +1,21 @@
 - name: Install System Tooling
   apt:
     name: 
+    - unzip 
+    - curl 
     - tmux
-    - curl
-    - tldr
-    - fzf
-    - vim
+    - tldr 
+    - lsof 
+    - moreutils
+    - fzf 
+    - clang # required to build and install newest version of neovim
+    - clang-11
+    - clang-12
+    - clangd
+    - clangd-11
+    - clangd-12
+    - ninja-build
+    - gettext
+    - cmake
   tags:
   - system

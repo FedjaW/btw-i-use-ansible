@@ -1,1 +1,0 @@
-echo "echo 'Created init.vim successfully!'"

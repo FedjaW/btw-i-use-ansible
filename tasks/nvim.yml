@@ -1,4 +1,33 @@
-- name: Intall neovim
-  apt: name=neovim
+- name: Clone Neovim
+  become: true
+  become_user: root
+  ansible.builtin.git:
+    depth: 1
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: "~/neovim"
   tags:
-  - nvim
+    - nvim
+
+- name: Build neovim
+  become: true
+  become_user: root
+  shell: "cd ~/neovim && make -j 20"
+  tags:
+    - nvim
+
+- name: Install neovim
+  become: true
+  become_user: root
+  shell: "cd ~/neovim && make install"
+  tags:
+    - nvim
+
+- name: Clone NvChad into .dotfiles
+  become: true
+  become_user: root
+  ansible.builtin.git:
+    depth: 1
+    repo: 'https://github.com/NvChad/starter'
+    dest: ".dotfiles/nvim/.config/nvim"
+  tags:
+    - nvim

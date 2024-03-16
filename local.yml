@@ -13,14 +13,14 @@
     - scripts
     - nvim
   tasks:
+  - name: Include task system
+    import_tasks: tasks/system.yml
   - name: Include task zsh
     import_tasks: tasks/zsh.yml
   - name: Include task node
     import_tasks: tasks/node.yml
   - name: Include task nvim
     import_tasks: tasks/nvim.yml
-  - name: Include task system
-    import_tasks: tasks/system.yml
   - name: Include task dotfiles
     import_tasks: tasks/dotfiles.yml
   - name: Include task scripts
