@@ -17,7 +17,7 @@ It will automatically execute `asible-playbook local.yml`.
 
 # Some random information I need to persist somewhere
 
-## Max out your window management performance by using:
+## Max out your window management performance by using
 
 - i3 (for ubuntu)
 - Yabai (for mac)
