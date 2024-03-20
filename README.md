@@ -1,9 +1,20 @@
-# How to
+# Usage
+
+**Run**
+
+```SHELL
+bash -c $(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh)
+```
+
+**Or**
 
 Make sure you have `git` and `ansible` installed, then run:
-`ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible`
 
-Grab a coffee, come back and voilà, your development environment is set up and ready to use.
+```SHELL
+ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible
+```
+
+**Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
 
 ## For debugging
 
@@ -13,7 +24,7 @@ Grab a coffee, come back and voilà, your development environment is set up and 
 - run `./build_dockers.sh`
 - run `./start_dockers.sh`
 
-It will automatically execute `asible-playbook local.yml`.
+It will automatically execute `./main.sh --debug`.
 
 # Some random information I need to persist somewhere
 

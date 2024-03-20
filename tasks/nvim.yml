@@ -1,24 +1,10 @@
-- name: Clone Neovim
+- name: Download Neovim
   become: true
   become_user: root
-  ansible.builtin.git:
-    depth: 1
-    repo: 'https://github.com/neovim/neovim.git'
-    dest: "~/neovim"
-  tags:
-    - nvim
-
-- name: Build neovim
-  become: true
-  become_user: root
-  shell: "cd ~/neovim && make -j 20"
-  tags:
-    - nvim
-
-- name: Install neovim
-  become: true
-  become_user: root
-  shell: "cd ~/neovim && make install"
+  shell: |
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim
+    sudo tar -C /opt -xzf nvim-linux64.tar.gz
   tags:
     - nvim
 
