@@ -57,21 +57,26 @@ case $ID in
     echo "Unsupported OS"
 esac
 
-# clone or update "btw-i-use-ansible" repo
-REPO_DIR="~/.config/btw-i-use-ansible"
-if ! [[ -d "$REPO_DIR" ]]; then
-    echo "Cloning repository"
-    git clone --quiet https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
-else 
-    echo "Updating repository"
-    git -C $REPO_DIR pull --quiet 
+REPO_DIR="$HOME/.config/btw-i-use-ansible"
+if ! [[ $debug == "--debug" ]]; then
+    # clone or update "btw-i-use-ansible" repo
+    if ! [[ -d "$REPO_DIR" ]]; then
+            echo "Cloning repository into $REPO_DIR"
+            git clone --quiet https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
+    else 
+        echo "Updating repository"
+        git -C $REPO_DIR pull --quiet 
+    fi
 fi
 
 if [[ $debug == "--debug" ]]; then
+    # mkdir -p $REPO_DIR # -p: no error if existing, make parent directories as needed
+    # cp -r /usr/local/bin/ $REPO_DIR/
+
     # will use the local.yml from within the docker container (by COPY step in Dockerfile)
     # and not the one that is pulled from the repo
     echo "Running playbook in debug mode"
-    ansible-playbook "./local.yml"
+    ansible-playbook "$REPO_DIR/local.yml"
 else
     echo "Running playbook"
     ansible-playbook "$REPO_DIR/local.yml"
