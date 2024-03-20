@@ -9,14 +9,10 @@ RUN apt-get install -y software-properties-common sudo wget curl git build-essen
 
 FROM base as final
 WORKDIR /usr/local/bin
-# COPY ./.dotfiles/ ./.dotfiles/
-# COPY ./scripts/ ./scripts/
-# COPY ./roles/ ./roles/
-# COPY ./local.yml .
-# COPY ./main.sh .
 COPY ./ /root/.config/btw-i-use-ansible
 
 # tag "node" is missing because it takes to long to install
 # CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system,scripts,nvim\"; zsh" ]
 # CMD [ "sh", "-c", "ansible-playbook local.yml; zsh" ]
-CMD [ "sh", "-c", "~/.config/btw-i-use-ansible/main.sh --debug; bash" ]
+RUN [ "chmod", "+x", "/root/.config/btw-i-use-ansible/main.sh" ]
+CMD [ "sh", "-c", "/root/.config/btw-i-use-ansible/main.sh --debug; bash" ]
