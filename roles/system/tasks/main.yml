@@ -3,7 +3,6 @@
     name: 
     - unzip 
     - curl 
-    - tmux
     - tldr 
     - lsof 
     - moreutils

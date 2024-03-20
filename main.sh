@@ -46,12 +46,20 @@ function ubuntu_setup() {
         sudo apt install ansible
     fi
 }
+
+function mac_setup() {
+    brew install ansible
+}
  
 # check os nd run setup function
-source /etc/os-release
-case $ID in 
-    ubuntu)
+# source /etc/os-release
+OS=$(uname -s) # command substituion via subshell
+case $OS in 
+    Linux)
         ubuntu_setup
+        ;;
+    Darwin)
+        mac_setup
         ;;
     *)
     echo "Unsupported OS"
@@ -69,15 +77,5 @@ if ! [[ $debug == "--debug" ]]; then
     fi
 fi
 
-if [[ $debug == "--debug" ]]; then
-    # mkdir -p $REPO_DIR # -p: no error if existing, make parent directories as needed
-    # cp -r /usr/local/bin/ $REPO_DIR/
-
-    # will use the local.yml from within the docker container (by COPY step in Dockerfile)
-    # and not the one that is pulled from the repo
-    echo "Running playbook in debug mode"
-    ansible-playbook "$REPO_DIR/local.yml"
-else
-    echo "Running playbook"
-    ansible-playbook "$REPO_DIR/local.yml"
-fi
+echo "Running playbook"
+ansible-playbook "$REPO_DIR/local.yml" -K
