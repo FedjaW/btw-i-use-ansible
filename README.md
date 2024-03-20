@@ -26,6 +26,16 @@ ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible
 
 It will automatically execute `./main.sh --debug`.
 
+# Something to read
+
+- https://phelipetls.github.io/posts/introduction-to-ansible/
+- https://github.com/TechDufus/dotfiles/tree/main
+- https://github.com/logandonley/dotfiles
+- https://www.devas.life/effective-neovim-setup-for-web-development-towards-2024/
+- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#ansible-facts-os-family
+
+---
+
 # Some random information I need to persist somewhere
 
 ## Max out your window management performance by using

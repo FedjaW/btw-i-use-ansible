@@ -1,0 +1,8 @@
+- name: "Tmux | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: tmux_distribution_config
+
+- name: "Install tmux for {{ ansible_distribution }}"
+  include_tasks: "{{ ansible_distribution }}.yml" 
+  when: tmux_distribution_config.stat.exists

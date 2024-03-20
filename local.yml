@@ -1,17 +1,15 @@
 - hosts: localhost
   become: true
   pre_tasks:
-  - name: Update cache (I want all my repos be up to date)
-    apt:
-      update_cache: true
-    tags: 
-    - zsh
-    # - node
-    - system
-    - stow
-    - dotfiles
-    - scripts
-    - nvim
+  - name: System details
+    debug: msg="{{ item }}"
+    with_items: 
+    - "{{ ansible_distribution }} {{ ansible_distribution_version }}"
+  - name: Update cache
+    include_tasks: pre_tasks/update_cache.yml
+  - name: Check brew is on the system
+    include_tasks: pre_tasks/check_brew.yml
   roles:
-  - './roles/system'
-  - './roles/zsh'
+  # - './roles/system'
+  # - './roles/zsh'
+  - './roles/tmux'
