@@ -1,0 +1,5 @@
+- name: "Install fzf for {{ ansible_distribution }}"
+  become_user: fedjabilms
+  homebrew:
+    name: fzf
+    state: present

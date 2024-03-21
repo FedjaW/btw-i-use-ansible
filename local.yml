@@ -1,13 +1,19 @@
 - hosts: localhost
   become: true
+  vars_files:
+    - ./config.yml
   pre_tasks:
-  - name: System details
-    include_tasks: pre_tasks/system_details.yml
-  - name: Update cache
-    include_tasks: pre_tasks/update_cache.yml
-  - name: Check brew is on the system
-    include_tasks: pre_tasks/check_brew.yml
+    - name: System details
+      include_tasks: pre_tasks/system_details.yml
+    - name: Update cache
+      include_tasks: pre_tasks/update_cache.yml
+    - name: Check brew is on the system
+      include_tasks: pre_tasks/check_brew.yml
   roles:
-  # - './roles/system'
-  # - './roles/zsh'
-  - './roles/tmux'
+    - "./roles/curl"
+    - "./roles/fzf"
+    - "./roles/nvim"
+    - "./roles/tldr"
+    - "./roles/tmux"
+    - "./roles/unzip"
+    - "./roles/zsh"

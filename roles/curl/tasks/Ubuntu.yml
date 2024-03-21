@@ -1,0 +1,2 @@
+- name: "Install curl for {{ ansible_distribution }}"
+  apt: name=curl

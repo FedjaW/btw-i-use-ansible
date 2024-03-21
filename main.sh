@@ -65,7 +65,7 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-REPO_DIR="$HOME/.config/btw-i-use-ansible"
+REPO_DIR=$(./read_repodir.sh)
 if ! [[ $debug == "--debug" ]]; then
     # clone or update "btw-i-use-ansible" repo
     if ! [[ -d "$REPO_DIR" ]]; then
@@ -77,5 +77,6 @@ if ! [[ $debug == "--debug" ]]; then
     fi
 fi
 
-echo "Running playbook"
+echo "Running playbook..."
 ansible-playbook "$REPO_DIR/local.yml" -K
+echo "Playbook done"

@@ -1,0 +1,2 @@
+- name: "Install unzip for {{ ansible_distribution }}"
+  apt: name=unzip
