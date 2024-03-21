@@ -1,15 +1,16 @@
-- name: Copy scripts
+- name: Copy scripts into /usr/local/bin
   become: true
   become_user: root
   ansible.builtin.copy:
-    src: scripts/
+    src: files/
     dest: /usr/local/bin
   tags:
-  - scripts
+    - scripts
+
 - name: Give scripts execute permissions
   become: true
   become_user: root
-  shell: | 
+  shell: |
     cd /usr/local/bin && 
     chmod +x ./tmux-sessionizer.sh && 
     chmod +x ./tmux-cht.sh &&
@@ -18,4 +19,4 @@
     chmod +x ./loggy.sh &&
     chmod +x ./newscript.sh
   tags:
-  - scripts
+    - scripts

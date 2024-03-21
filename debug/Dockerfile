@@ -8,14 +8,14 @@ RUN apt-get install -y software-properties-common sudo wget curl git build-essen
     apt-get install -y curl git ansible build-essential
 
 FROM base as final
-WORKDIR /usr/local/bin
 
 # ARG at build time
-ARG REPO_DIR_ARG=/root/.config/btw-i-use-ansible
-# ENV at run time
+ARG REPO_DIR_ARG
+# ENV at run time (hack: CMD won't resolve $REPO_DIR_ARG at build time)
 ENV REPO_DIR_ENV=$REPO_DIR_ARG
 
-COPY ./ $REPO_DIR_ARG
+WORKDIR $REPO_DIR_ARG
+COPY ./ ./
 
 # Variable substitution
 # Using the exec form doesn't automatically invoke a command shell. 

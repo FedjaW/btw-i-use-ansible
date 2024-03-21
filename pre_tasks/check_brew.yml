@@ -2,5 +2,5 @@
   ansible.builtin.lineinfile:
     path: /etc/paths
     state: present
-    line: '/opt/homebrew/bin'
+    line: "/opt/homebrew/bin"
   when: ansible_facts['os_family'] == 'Darwin'

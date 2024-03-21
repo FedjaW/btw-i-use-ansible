@@ -1,5 +1,5 @@
 - name: "Install tmux for {{ ansible_distribution }}"
-  become_user: fedjabilms  # if not specified, will execute as root -> but ansible won't allow brew root permission
+  become_user: fedjabilms # if not specified, will execute as root -> but ansible won't allow brew root permission
   homebrew:
     name: tmux
     state: present

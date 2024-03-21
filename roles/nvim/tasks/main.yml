@@ -8,12 +8,13 @@
   tags:
     - nvim
 
+# TODO: use own config from lazyvim
 - name: Clone LazyVim into .dotfiles
   become: true
   become_user: root
   ansible.builtin.git:
     depth: 1
-    repo: 'https://github.com/LazyVim/starter'
+    repo: "https://github.com/LazyVim/starter"
     dest: ".dotfiles/nvim/.config/nvim"
   tags:
     - nvim

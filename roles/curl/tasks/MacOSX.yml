@@ -1,0 +1,5 @@
+- name: "Install curl for {{ ansible_distribution }}"
+  become_user: fedjabilms
+  homebrew:
+    name: curl
+    state: present
