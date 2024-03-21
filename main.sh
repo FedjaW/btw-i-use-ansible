@@ -28,8 +28,10 @@ set -e # exit on error
 
 # consider using getopts
 # but might be an overkill for this simple usecase
-debug=$1
-if [[ ! -z "$debug" ]] && [[ "$debug" != "--debug" ]]; then
+REPO_DIR=$1
+DEBUG=$2
+
+if [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
     echo "Usage: ./main.sh"
     echo "Usage: ./main.sh --debug"
     exit 1
@@ -65,8 +67,7 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-REPO_DIR=$(cat ./config.yml | grep "repo_dir: " | sed 's/repo_dir: //')
-if ! [[ $debug == "--debug" ]]; then
+if ! [[ $DEBUG == "--debug" ]]; then
     # clone or update "btw-i-use-ansible" repo
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"
@@ -78,5 +79,5 @@ if ! [[ $debug == "--debug" ]]; then
 fi
 
 echo "Running playbook..."
-ansible-playbook "$REPO_DIR/local.yml" -K
+ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
 echo "Playbook done"

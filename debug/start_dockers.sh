@@ -1,9 +1,8 @@
 #!/bin/bash
 
 cd ..
-REPO_DIR=$(cat ./config.yml | grep "repo_dir: " | sed 's/repo_dir: //') # see (*)
 echo "Run docker"
-docker run -e REPO_DIR_ENV=$REPO_DIR -it --rm virgin_machine 
+docker run -it --rm virgin_machine 
 
 # (*)
 # my thoughts:
