@@ -28,6 +28,6 @@ RUN  chmod +x ${REPO_DIR_ARG}/main.sh
 # CMD sh -c ${REPO_DIR}/main.sh --debug; bash
 CMD ["sh", "-c", "${REPO_DIR_ENV}/main.sh --debug; bash"]
 
-# To find the CMD of an existing image
+# print the CMD of an existing image
 # docker inspect -f '{{.Config.Cmd}}' <image:tag>
 # docker inspect -f {{.Config.Cmd}} virgin_machine

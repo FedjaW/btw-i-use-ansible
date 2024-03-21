@@ -51,8 +51,8 @@ function mac_setup() {
     brew install ansible
 }
  
-# check os nd run setup function
-# source /etc/os-release
+# check os and run setup function
+# source /etc/os-release # (wont't work on mac)
 OS=$(uname -s) # command substituion via subshell
 case $OS in 
     Linux)
