@@ -37,9 +37,6 @@ if [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
     exit 1
 fi
 
-echo $REPO_DIR
-exit 0
-
 # setup ubuntu to run ansible tasks
 function ubuntu_setup() {
     # 2>/dev/null 1>/dev/null is equal to >/dev/null 2>&1

@@ -10,7 +10,7 @@
 **Run**
 
 ```SHELL
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh) </REPO_ATH>"
+curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- </REPO_ATH>
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
