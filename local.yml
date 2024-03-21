@@ -10,7 +10,7 @@
   roles:
     - "./roles/curl"
     - "./roles/fzf"
-    - "./roles/node"
+    # - "./roles/node"
     - "./roles/nvim"
     - "./roles/scripts"
     - "./roles/tldr"

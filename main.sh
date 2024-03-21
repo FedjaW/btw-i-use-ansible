@@ -15,8 +15,8 @@
 # and dev environment on a fresh machine from scratch
 
 # Usage:
-# ./main.sh
-# ./main.sh --debug
+# ./main.sh <REPO_PATH_TO_CLONE_TO>
+# ./main.sh <REPO_PATH_TO_CLONE_TO> --debug
 # Hint:
 # --debug will tell ansible to use the ./local.yaml file 
 # in the current directory
@@ -37,7 +37,6 @@ if [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
     exit 1
 fi
 
-# setup ubuntu to run ansible tasks
 function ubuntu_setup() {
     # 2>/dev/null 1>/dev/null is equal to >/dev/null 2>&1
     if ! dpkg -s ansible 2>/dev/null 1>/dev/null; then
@@ -53,9 +52,8 @@ function mac_setup() {
     brew install ansible
 }
  
-# check os and run setup function
 # source /etc/os-release # (wont't work on mac)
-OS=$(uname -s) # command substituion via subshell
+OS=$(uname -s)
 case $OS in 
     Linux)
         ubuntu_setup
@@ -67,8 +65,8 @@ case $OS in
     echo "Unsupported OS"
 esac
 
+# in debug mode, dockerfile will copy sources into container
 if ! [[ $DEBUG == "--debug" ]]; then
-    # clone or update "btw-i-use-ansible" repo
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"
             git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
