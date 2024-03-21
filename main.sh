@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#________________________________________________________
-# Author: Friedrich Wilms
+# Author: Friedrich
 # Date Created: 20.3.2024
 # Date Modified: 21.3.2024
 # Weather: Dear future me, today (20.3.2024) is a wonderful
@@ -9,36 +8,17 @@
 # to setup my furure notebooks with one command.
 
 # Description:
-# Pulls my "btw-i-use-ansible" repo
+# Pulls my "btw-i-use-ansible" repo,
 # installs ansible and runs the playbook to
-# automatically setup my dotfiles 
-# and dev environment on a fresh machine from scratch
+# automatically setup dotfiles
+# and dev environment on a fresh machine from scratch.
+# Supports MacOSX and Ubuntu.
 
 # Usage:
 # ./main.sh <REPO_PATH_TO_CLONE_TO>
 # ./main.sh <REPO_PATH_TO_CLONE_TO> --debug
-# Hint:
-# --debug will tell ansible to use the ./local.yaml file 
-# in the current directory
-# instead of the one from the cloned repo
-# this is handy when debugging via docker (see: debug folder)
-#________________________________________________________
-
-set -e # exit on error
-
-# consider using getopts
-# but might be an overkill for this simple usecase
-REPO_DIR=$1
-DEBUG=$2
-
-if [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
-    echo "Usage: ./main.sh"
-    echo "Usage: ./main.sh --debug"
-    exit 1
-fi
 
 function ubuntu_setup() {
-    # 2>/dev/null 1>/dev/null is equal to >/dev/null 2>&1
     if ! dpkg -s ansible 2>/dev/null 1>/dev/null; then
         echo "Installing ansible"
         sudo apt update
@@ -51,7 +31,28 @@ function ubuntu_setup() {
 function mac_setup() {
     brew install ansible
 }
- 
+
+function print_usage_and_exit() {
+    echo "Usage: ./main.sh <repo_path>"
+    echo "Usage: ./main.sh <repo_path> --debug"
+    exit 1
+}
+
+set -e # exit on error
+
+# consider using getopts
+# but might be an overkill for this simple usecase
+REPO_DIR=$1
+DEBUG=$2
+
+if [[ $REPO_DIR == "--debug" ]]; then
+    print_usage_and_exit
+fi
+
+if  [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
+    print_usage_and_exit
+fi
+
 # source /etc/os-release # (wont't work on mac)
 OS=$(uname -s)
 case $OS in 
