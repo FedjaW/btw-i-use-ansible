@@ -67,6 +67,7 @@ case $OS in
 esac
 
 # in debug mode, dockerfile will copy sources into container
+# if not run from /debug folder pass PWD as REPO_PATH
 if ! [[ $DEBUG == "--debug" ]]; then
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"

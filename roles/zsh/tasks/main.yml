@@ -1,13 +1,23 @@
 - name: Install zsh
-  apt: name=zsh
+  include_tasks: "{{ ansible_distribution }}.yml"
 
 - name: Change shell
   shell: chsh -s `which zsh`
 
-- name: Install ohmyzsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  args:
-    warn: false
+- name: Delete ohmyzsh
+  ansible.builtin.file:
+    state: absent
+    path: ~/.oh-my-zsh
+
+- name: Download Oh My Zsh installation script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_ohmyzsh.sh
+
+- name: Run Oh My Zsh installation script
+  command: sh /tmp/install_ohmyzsh.sh --unattended
+  register: ohmyzsh_result
+  failed_when: "'FAILED' in ohmyzsh_result.stderr"
 
 - name: Delete .zhrc
   ansible.builtin.file:

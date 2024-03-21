@@ -10,10 +10,30 @@
 **Run**
 
 ```SHELL
-curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- </REPO_ATH>
+curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- </REPO_PATH>
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
+
+--- 
+
+**Run again (when cloned already)**
+
+cd into </REPO_PATH>
+
+```SHELL
+./main.sh $(PWD)
+```
+
+**OR run with local changes**
+
+```SHELL
+./main.sh $(PWD) --debug 
+```
+
+--debug, will not clone or update repo
+--debug is mainly used for debug usecase in a docker container
+but can be used here
 
 ## For debugging
 

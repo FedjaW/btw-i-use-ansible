@@ -5,6 +5,7 @@
 - [x] add more scripts from bash repo
 
 - [ ] get rid of the [y/n] stops at ansible install
+- [ ] consider renaming --debug into something like --no-sync, --no-pull, --no-clone
 - [ ] make tmux-sessionizer craete a session if no server run
 - [ ] add dotnet task
 - [ ] setup lsp for go
