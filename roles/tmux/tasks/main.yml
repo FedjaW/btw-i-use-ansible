@@ -6,3 +6,10 @@
 - name: "Install tmux for {{ ansible_distribution }}"
   include_tasks: "{{ ansible_distribution }}.yml"
   when: tmux_distribution_config.stat.exists
+
+- name: Symlink .tmux.conf
+  ansible.builtin.file:
+    src: "{{ repo_dir }}/roles/tmux/files/.tmux.conf"
+    dest: "$HOME/.tmux.conf"
+    state: link
+    force: true
