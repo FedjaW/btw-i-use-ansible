@@ -1,1 +1,2 @@
+# The absolute path to the directory where the repository will be cloned into.
 repo_dir: /hello

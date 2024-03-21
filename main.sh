@@ -3,8 +3,8 @@
 #________________________________________________________
 # Author: Friedrich Wilms
 # Date Created: 20.3.2024
-# Date Modified: 20.3.2024
-# Weather: Dear future me, today is a wonderful
+# Date Modified: 21.3.2024
+# Weather: Dear future me, today (20.3.2024) is a wonderful
 # day to work on such a beautiful script that will help me
 # to setup my furure notebooks with one command.
 
@@ -65,7 +65,7 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-REPO_DIR=$(./read_repodir.sh)
+REPO_DIR=$(cat ./config.yml | grep "repo_dir: " | sed 's/repo_dir: //')
 if ! [[ $debug == "--debug" ]]; then
     # clone or update "btw-i-use-ansible" repo
     if ! [[ -d "$REPO_DIR" ]]; then
