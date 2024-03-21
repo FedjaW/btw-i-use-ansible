@@ -1,5 +1,12 @@
 # Usage
 
+**Bare minimum prerequisites**
+
+- apt update
+- apt install sudo
+- apt install curl
+- apt install git
+
 **Run**
 
 ```SHELL
@@ -16,7 +23,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible
 - run `./build_dockers.sh`
 - run `./start_dockers.sh`
 
-It will automatically execute `./main.sh --debug`.
+It will automatically execute `./main.sh /happypath --debug`.
 
 # Something to read
 
