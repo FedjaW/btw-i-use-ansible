@@ -12,8 +12,6 @@
   become_user: root
   shell: |
     cd /usr/local/bin && 
-    chmod +x ./tmux-sessionizer.sh && 
-    chmod +x ./tmux-cht.sh &&
     chmod +x ./backup.sh &&
     chmod +x ./birthday.sh &&
     chmod +x ./loggy.sh &&

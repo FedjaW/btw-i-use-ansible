@@ -13,3 +13,18 @@
     dest: "$HOME/.tmux.conf"
     state: link
     force: true
+
+- name: Copy scripts into /usr/local/bin
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: files/
+    dest: /usr/local/bin # nice trick to make scripts globally available, because this path is within $PATH
+
+- name: Give tmux scripts execute permissions
+  become: true
+  become_user: root
+  shell: |
+    cd /usr/local/bin && 
+    chmod +x ./tmux-sessionizer && 
+    chmod +x ./tmux-cht

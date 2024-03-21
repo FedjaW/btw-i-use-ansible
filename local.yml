@@ -10,10 +10,14 @@
   roles:
     - "./roles/curl"
     - "./roles/fzf"
-    # - "./roles/node"
+    - "./roles/node"
     - "./roles/nvim"
     - "./roles/scripts"
     - "./roles/tldr"
     - "./roles/tmux"
     - "./roles/unzip"
     - "./roles/zsh"
+
+#_________________________
+# Dendencies:
+# tmux (scripts) need fzf

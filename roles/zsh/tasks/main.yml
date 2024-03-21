@@ -1,24 +1,18 @@
 - name: Install zsh
   apt: name=zsh
-  tags:
-    - zsh
 
 - name: Change shell
   shell: chsh -s `which zsh`
-  tags:
-    - zsh
 
 - name: Install ohmyzsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  tags:
-    - zsh
+  args:
+    warn: false
 
 - name: Delete .zhrc
-  shell: rm -rf ~/.zshrc
-  become: true
-  become_user: root
-  tags:
-    - zsh
+  ansible.builtin.file:
+    state: absent
+    path: ~/.zshrc
 
 - name: Symlink .zhrc
   ansible.builtin.file:
@@ -28,12 +22,8 @@
     force: true
   become: true
   become_user: root
-  tags:
-    - zsh
 
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags:
-    - zsh
