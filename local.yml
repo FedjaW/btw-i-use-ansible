@@ -10,10 +10,4 @@
     - name: Check brew is on the system
       include_tasks: pre_tasks/check_brew.yml
   roles:
-    - "./roles/curl"
-    - "./roles/fzf"
-    - "./roles/nvim"
-    - "./roles/tldr"
-    - "./roles/tmux"
-    - "./roles/unzip"
     - "./roles/zsh"

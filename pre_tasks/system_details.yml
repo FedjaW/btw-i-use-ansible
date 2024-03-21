@@ -5,4 +5,4 @@
 
 - name: Print the value of repo_dir
   debug:
-    msg: "{{ repo_dir2 }} "
+    msg: "{{ repo_dir }} "
