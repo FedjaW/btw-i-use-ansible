@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -it --rm virgin_machine
+docker run -e REPO_DIR_ENV=/hallo -it --rm virgin_machine 

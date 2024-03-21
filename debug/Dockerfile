@@ -9,10 +9,25 @@ RUN apt-get install -y software-properties-common sudo wget curl git build-essen
 
 FROM base as final
 WORKDIR /usr/local/bin
-COPY ./ /root/.config/btw-i-use-ansible
 
-# tag "node" is missing because it takes to long to install
-# CMD [ "sh", "-c", "ansible-playbook local.yml --tags \"zsh,dotfiles,system,scripts,nvim\"; zsh" ]
-# CMD [ "sh", "-c", "ansible-playbook local.yml; zsh" ]
-RUN [ "chmod", "+x", "/root/.config/btw-i-use-ansible/main.sh" ]
-CMD [ "sh", "-c", "/root/.config/btw-i-use-ansible/main.sh --debug; bash" ]
+# ARG at build time
+ARG REPO_DIR_ARG=/root/.config/btw-i-use-ansible
+# ENV at run time
+ENV REPO_DIR_ENV=$REPO_DIR_ARG
+
+COPY ./ $REPO_DIR_ARG
+
+# Variable substitution
+# Using the exec form doesn't automatically invoke a command shell. 
+# This means that normal shell processing, such as variable substitution, doesn't happen.
+# For example, RUN [ "echo", "$HOME" ] won't handle variable substitution for $HOME.
+# RUN  "chmod", "+x", ${REPO_DIR}"/main.sh" ]
+# see: https://docs.docker.com/reference/dockerfile/#exec-form
+RUN  chmod +x ${REPO_DIR_ARG}/main.sh
+
+# CMD sh -c ${REPO_DIR}/main.sh --debug; bash
+CMD ["sh", "-c", "${REPO_DIR_ENV}/main.sh --debug; bash"]
+
+# To find the CMD of an existing image
+# docker inspect -f '{{.Config.Cmd}}' <image:tag>
+# docker inspect -f {{.Config.Cmd}} virgin_machine
