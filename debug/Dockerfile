@@ -8,13 +8,7 @@ RUN apt-get install -y software-properties-common sudo wget curl git build-essen
     apt-get install -y curl git ansible build-essential
 
 FROM base as final
-
-# ARG at build time
-ARG REPO_DIR_ARG
-# ENV at run time (hack: CMD won't resolve $REPO_DIR_ARG at build time)
-ENV REPO_DIR_ENV=$REPO_DIR_ARG
-
-WORKDIR $REPO_DIR_ARG
+WORKDIR /happypath
 COPY ./ ./
 
 # Variable substitution
@@ -23,10 +17,10 @@ COPY ./ ./
 # For example, RUN [ "echo", "$HOME" ] won't handle variable substitution for $HOME.
 # RUN  "chmod", "+x", ${REPO_DIR}"/main.sh" ]
 # see: https://docs.docker.com/reference/dockerfile/#exec-form
-RUN  chmod +x ${REPO_DIR_ARG}/main.sh
+RUN  chmod +x /happypath/main.sh
 
 # CMD sh -c ${REPO_DIR}/main.sh --debug; bash
-CMD ["sh", "-c", "${REPO_DIR_ENV}/main.sh --debug; bash"]
+CMD ["sh", "-c", "/happypath/main.sh /happypath --debug; bash"]
 
 # print the CMD of an existing image
 # docker inspect -f '{{.Config.Cmd}}' <image:tag>

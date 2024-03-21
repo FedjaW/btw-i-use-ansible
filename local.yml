@@ -1,7 +1,5 @@
 - hosts: localhost
   become: true
-  vars_files:
-    - ./config.yml
   pre_tasks:
     - name: System details
       include_tasks: pre_tasks/system_details.yml
@@ -10,4 +8,12 @@
     - name: Check brew is on the system
       include_tasks: pre_tasks/check_brew.yml
   roles:
+    - "./roles/curl"
+    - "./roles/fzf"
+    # - "./roles/node"
+    - "./roles/nvim"
+    - "./roles/scripts"
+    - "./roles/tldr"
+    - "./roles/tmux"
+    - "./roles/unzip"
     - "./roles/zsh"
