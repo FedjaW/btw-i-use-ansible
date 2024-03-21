@@ -70,7 +70,7 @@ if ! [[ $debug == "--debug" ]]; then
     # clone or update "btw-i-use-ansible" repo
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"
-            git clone --quiet https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
+            git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
     else 
         echo "Updating repository"
         git -C $REPO_DIR pull --quiet 
