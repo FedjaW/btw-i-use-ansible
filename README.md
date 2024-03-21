@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.
 - run `./build_dockers.sh`
 - run `./start_dockers.sh`
 
-It will automatically execute `./main.sh /happypath --debug`.
+It will automatically execute `./debug/main.sh /happypath --debug`.
 
 # Something to read
 
