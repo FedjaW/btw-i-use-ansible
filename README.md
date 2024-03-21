@@ -3,15 +3,7 @@
 **Run**
 
 ```SHELL
-bash -c $(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh)
-```
-
-**Or**
-
-Make sure you have `git` and `ansible` installed, then run:
-
-```SHELL
-ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh) </REPO_ATH>"
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
