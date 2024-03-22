@@ -8,14 +8,14 @@
     - name: Check brew is on the system
       include_tasks: pre_tasks/check_brew.yml
   roles:
-    # - "./roles/curl"
-    # - "./roles/fzf"
+    - "./roles/curl"
+    - "./roles/fzf"
     # - "./roles/node"
     - "./roles/nvim"
-    # - "./roles/scripts"
-    # - "./roles/tldr"
-    # - "./roles/tmux"
-    # - "./roles/unzip"
+    - "./roles/scripts"
+    - "./roles/tldr"
+    - "./roles/tmux"
+    - "./roles/unzip"
     - "./roles/zsh"
 
 #_________________________

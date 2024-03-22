@@ -9,7 +9,7 @@
 
 - name: Symlink .tmux.conf
   ansible.builtin.file:
-    src: "{{ repo_dir }}/roles/tmux/files/.tmux.conf"
+    src: "{{ role_path }}/files/.tmux.conf"
     dest: "$HOME/.tmux.conf"
     state: link
     force: true

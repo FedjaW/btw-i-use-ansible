@@ -5,8 +5,7 @@
 - [x] add more scripts from bash repo
 - [x] consider renaming --debug into something like --no-sync, --no-pull, --no-clone
 - [x] remove .sh from scripts because they are global
-
-- [ ] can i get rid of repo_dir in ansible playbook
+- [x] can i get rid of repo_dir in ansible playbook
 
 - [ ] get rid of the [y/n] stops at ansible install
 - [ ] make tmux-sessionizer create a session if no server run

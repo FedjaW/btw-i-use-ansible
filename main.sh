@@ -18,7 +18,7 @@
 # ./main.sh
 # ./main.sh <REPO_PATH_TO_CLONE_INTO>
 
-REPO_DIR=$1
+REPO_PATH=$1
 
 function ubuntu_setup() {
     echo "Check if Ansible is installed"
@@ -50,15 +50,15 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-if [[ -z $REPO_DIR ]]; then
-    REPO_DIR=$(pwd)
+if [[ -z $REPO_PATH ]]; then
+    REPO_PATH=$(pwd)
 fi
 
-if ! [[ -d "$REPO_DIR" ]]; then
-    echo "Cloning repository into $REPO_DIR"
-    git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
+if ! [[ -d "$REPO_PATH" ]]; then
+    echo "Cloning repository into $REPO_PATH"
+    git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_PATH
 fi
 
 echo "Running playbook"
-ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
+ansible-playbook "$REPO_PATH/local.yml" -K
 echo "Playbook done"
