@@ -12,6 +12,10 @@ BASH - Bourne Again SHell
 
 `#!/bin/bash` is a comment read by the shell and tells the os where the path to the binary is that must execute the script.
 
+in fact `#!/bin/bash` is not the best way to define bash as the interpreter of the script, because on some system bash isn't at that given path.
+
+a better way to specify bash is to use `#!/usr/bin/env bash`. with this the system will look up the correct path of bash.
+
 run a file command on a file to see the difference:
 `file myscript.sh`
 output:

@@ -1,20 +1,39 @@
 # Usage
 
+**Bare minimum prerequisites**
+
+- apt update
+- apt install sudo
+- apt install curl
+- apt install git
+
 **Run**
 
 ```SHELL
-bash -c $(curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh)
-```
-
-**Or**
-
-Make sure you have `git` and `ansible` installed, then run:
-
-```SHELL
-ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible
+curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- </REPO_PATH>
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
+
+--- 
+
+**Run again (when cloned already)**
+
+cd into </REPO_PATH>
+
+```SHELL
+./main.sh $(PWD)
+```
+
+**OR run with local changes**
+
+```SHELL
+./main.sh $(PWD) --debug 
+```
+
+--debug, will not clone or update repo
+--debug is mainly used for debug usecase in a docker container
+but can be used here
 
 ## For debugging
 
@@ -24,7 +43,17 @@ ansible-pull -U https://github.com/FedjaW/btw-i-use-ansible
 - run `./build_dockers.sh`
 - run `./start_dockers.sh`
 
-It will automatically execute `./main.sh --debug`.
+It will automatically execute `./debug/main.sh /happypath --debug`.
+
+# Something to read
+
+- https://phelipetls.github.io/posts/introduction-to-ansible/
+- https://github.com/TechDufus/dotfiles/tree/main
+- https://github.com/logandonley/dotfiles
+- https://www.devas.life/effective-neovim-setup-for-web-development-towards-2024/
+- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#ansible-facts-os-family
+
+---
 
 # Some random information I need to persist somewhere
 

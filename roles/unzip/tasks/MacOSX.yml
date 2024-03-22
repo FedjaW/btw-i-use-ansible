@@ -1,0 +1,5 @@
+- name: "Install unzip for {{ ansible_distribution }}"
+  become_user: fedjabilms
+  homebrew:
+    name: unzip
+    state: present

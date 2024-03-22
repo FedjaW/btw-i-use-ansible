@@ -1,0 +1,6 @@
+- name: Make sure homebrew bin is in path
+  ansible.builtin.lineinfile:
+    path: /etc/paths
+    state: present
+    line: "/opt/homebrew/bin"
+  when: ansible_facts['os_family'] == 'Darwin'

@@ -1,27 +1,23 @@
 - hosts: localhost
   become: true
   pre_tasks:
-  - name: Update cache (I want all my repos be up to date)
-    apt:
-      update_cache: true
-    tags: 
-    - zsh
-    # - node
-    - system
-    - stow
-    - dotfiles
-    - scripts
-    - nvim
-  tasks:
-  - name: Include task system
-    import_tasks: tasks/system.yml
-  - name: Include task zsh
-    import_tasks: tasks/zsh.yml
-# - name: Include task node
-  # import_tasks: tasks/node.yml
-  - name: Include task nvim
-    import_tasks: tasks/nvim.yml
-  - name: Include task dotfiles
-    import_tasks: tasks/dotfiles.yml
-  - name: Include task scripts
-    import_tasks: tasks/scripts.yml
+    - name: System details
+      include_tasks: pre_tasks/system_details.yml
+    - name: Update cache
+      include_tasks: pre_tasks/update_cache.yml
+    - name: Check brew is on the system
+      include_tasks: pre_tasks/check_brew.yml
+  roles:
+    - "./roles/curl"
+    - "./roles/fzf"
+    # - "./roles/node"
+    - "./roles/nvim"
+    # - "./roles/scripts"
+    - "./roles/tldr"
+    - "./roles/tmux"
+    - "./roles/unzip"
+    - "./roles/zsh"
+
+#_________________________
+# Dendencies:
+# tmux (scripts) need fzf

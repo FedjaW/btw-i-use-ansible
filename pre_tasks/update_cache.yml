@@ -1,0 +1,14 @@
+- name: Update cache - Ubuntu
+  apt:
+    update_cache: true
+  when: ansible_facts['os_family'] == 'Linux'
+
+# Update homebrew and upgrade all packages
+# Skip for now. Reason:
+# Error: Running Homebrew as root is extremely dangerous and no longer supported.
+#        As Homebrew does not drop privileges on installation you would be giving all\nbuild scripts full access to your system.
+- name: Update cache - MacOSX
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+  when: ansible_facts['os_family'] == 'SKIP' #'Darwin'

@@ -1,0 +1,5 @@
+- name: "Install tldr for {{ ansible_distribution }}"
+  become_user: fedjabilms
+  homebrew:
+    name: tldr
+    state: present

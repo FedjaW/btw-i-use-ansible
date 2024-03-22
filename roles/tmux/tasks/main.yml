@@ -1,0 +1,30 @@
+- name: "Tmux | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: tmux_distribution_config
+
+- name: "Install tmux for {{ ansible_distribution }}"
+  include_tasks: "{{ ansible_distribution }}.yml"
+  when: tmux_distribution_config.stat.exists
+
+- name: Symlink .tmux.conf
+  ansible.builtin.file:
+    src: "{{ repo_dir }}/roles/tmux/files/.tmux.conf"
+    dest: "$HOME/.tmux.conf"
+    state: link
+    force: true
+
+- name: Copy scripts into /usr/local/bin
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: files/
+    dest: /usr/local/bin # nice trick to make scripts globally available, because this path is within $PATH
+
+- name: Give tmux scripts execute permissions
+  become: true
+  become_user: root
+  shell: |
+    cd /usr/local/bin && 
+    chmod +x ./tmux-sessionizer && 
+    chmod +x ./tmux-cht

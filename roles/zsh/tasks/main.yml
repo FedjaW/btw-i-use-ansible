@@ -1,0 +1,39 @@
+- name: Install zsh
+  include_tasks: "{{ ansible_distribution }}.yml"
+
+- name: Change shell
+  shell: chsh -s `which zsh`
+
+- name: Delete ohmyzsh
+  ansible.builtin.file:
+    state: absent
+    path: ~/.oh-my-zsh
+
+- name: Download Oh My Zsh installation script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_ohmyzsh.sh
+
+- name: Run Oh My Zsh installation script
+  command: sh /tmp/install_ohmyzsh.sh --unattended
+  register: ohmyzsh_result
+  failed_when: "'FAILED' in ohmyzsh_result.stderr"
+
+- name: Delete .zhrc
+  ansible.builtin.file:
+    state: absent
+    path: ~/.zshrc
+
+- name: Symlink .zhrc
+  ansible.builtin.file:
+    src: "{{ repo_dir }}/roles/zsh/files/.zshrc"
+    dest: "$HOME/.zshrc"
+    state: link
+    force: true
+  become: true
+  become_user: root
+
+- name: Install autosuggestions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    dest: "$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"

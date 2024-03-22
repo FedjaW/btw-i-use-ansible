@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker run -it --rm virgin_machine
+cd ..
+echo "Run docker"
+docker run -it --rm virgin_machine 
