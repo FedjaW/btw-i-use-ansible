@@ -19,17 +19,17 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Usage
 
-## Run *
+## Run
 
-Replace `<REPO_PATH>` with the absolut path to the desired target clone directory, e.g.: `/happypath`
 
 ```SHELL
-curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- <REPO_PATH>
+# Clones repo into $HOME/btw-i-use-ansible and runs ansible playbook
+curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
 
-\* If you don't want the script to run immediately, then clone the repo, make changes to it as you like and then run within the repo folder:
+If you don't want the script to run immediately, then clone the repo, make changes to it as you like and then run within the repo folder:
 
 ```SHELL
 ./main.sh
