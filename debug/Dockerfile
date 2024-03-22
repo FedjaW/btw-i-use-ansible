@@ -8,10 +8,10 @@ RUN apt-get install -y software-properties-common sudo wget curl git build-essen
     apt-get install -y curl git ansible build-essential
 
 FROM base as final
-WORKDIR /root/btw-i-use-ansible
+WORKDIR /btw-i-use-ansible
 COPY ./ ./
-RUN ["chmod", "+x", "/root/btw-i-use-ansible/main.sh"]
-CMD ["sh", "-c", "/root/btw-i-use-ansible/main.sh; bash"]
+RUN ["chmod", "+x", "/btw-i-use-ansible/main.sh"]
+CMD ["sh", "-c", "/btw-i-use-ansible/main.sh; bash"]
 
 # print the CMD of an existing image
 # docker inspect -f '{{.Config.Cmd}}' <image:tag>

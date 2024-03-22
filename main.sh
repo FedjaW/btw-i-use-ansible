@@ -38,21 +38,28 @@ set -e # exit on error
 OS=$(uname -s)
 case $OS in 
     Linux)
-        ubuntu_setup
+        # ubuntu_setup
         ;;
     Darwin)
-        mac_setup
+        # mac_setup
         ;;
     *)
     echo "Unsupported OS"
 esac
 
-REPO_PATH=$HOME/btw-i-use-ansible
-if ! [[ -d "$REPO_PATH" ]]; then
-    echo "Cloning repository into $REPO_PATH"
-    git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_PATH
+repository_name=btw-i-use-ansible
+current_dirname=$(basename "$PWD")
+if [[ $current_dirname == $repository_name ]]; then
+    checkout_path=$(pwd)
+else
+    checkout_path=$(pwd)/$repository_name
+fi
+
+if ! [[ -d "$checkout_path" ]]; then
+    echo "Cloning repository into $checkout_path"
+    git clone --filter=blob:none https://github.com/FedjaW/${repository_name}.git
 fi
 
 echo "Running playbook"
-ansible-playbook "$REPO_PATH/local.yml" -K
+ansible-playbook "$checkout_path/local.yml" -K
 echo "Playbook done"
