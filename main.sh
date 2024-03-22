@@ -17,9 +17,6 @@
 # Usage:
 # ./main.sh
 
-REPO_DIR=$1
-echo debugging
-
 function ubuntu_setup() {
     echo "Check if Ansible is installed"
     if ! dpkg -s ansible >/dev/null 2>&1; then
@@ -50,19 +47,12 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-echo repodir1
-echo $REPO_DIR
-if [[ -z $REPO_DIR ]]; then
-    echo repodir2
-    echo $REPO_DIR
-    REPO_DIR=$(pwd)
-fi
-
+REPO_DIR=$HOME/btw-i-use-ansible
 if ! [[ -d "$REPO_DIR" ]]; then
     echo "Cloning repository into $REPO_DIR"
     git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
 fi
 
 echo "Running playbook"
-# ansible-playbook "$REPO_DIR/local.yml" -K
+ansible-playbook "$REPO_DIR/local.yml" -K
 echo "Playbook done"
