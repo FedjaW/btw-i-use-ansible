@@ -1,10 +1,10 @@
-**what is a shell?**
+## what is a shell?
 
 "A `program` that `interprets` the commands you type in your terminal and `passes` them on to the `operating system`" - unknown.
 
 "The `purpose` of the shell is to make it more `convenient` for ypu to `issue commands` to your computer". - unknown.
 
-**what it bash?**
+##  what it bash?
 
 BASH - Bourne Again SHell
 
@@ -21,7 +21,7 @@ run a file command on a file to see the difference:
 output:
 `myscript.sh: Bourne-Again shell script, ASCII text executable`
 
-**Permissions**
+## Permissions
 
 To give the scipt execute permissions run:
 `chmod +x myscript.sh` or  `chmod 744 myscript.sh`
@@ -38,7 +38,7 @@ Definition:
 `w: write`
 `x: execute`
 
-**PATH**
+## PATH
 
 In Linux the systems path is a variable that tell the shell which directories to search for executable files in the directories defined in its path variable.
 
@@ -48,3 +48,14 @@ One way to add a script to the path variable:
 
 1. open `vim ~/.profile`
 2. add `export PATH="$PATH:$HOME/myscripts"`
+
+## Inspect processes
+
+execute: `zsh`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `zsh`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `exit`\
+execute: `ps -o pid,ppid= -C zsh`\
+execute: `exit`\
+execute: `ps -o pid,ppid= -C zsh`

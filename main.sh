@@ -16,7 +16,7 @@
 
 # Usage:
 # ./main.sh <REPO_PATH_TO_CLONE_TO>
-# ./main.sh <REPO_PATH_TO_CLONE_TO> --debug
+# ./main.sh <REPO_PATH_TO_CLONE_TO> --no-checkout
 
 function ubuntu_setup() {
     if ! dpkg -s ansible 2>/dev/null 1>/dev/null; then
@@ -33,27 +33,27 @@ function mac_setup() {
 }
 
 function print_usage_and_exit() {
-    echo "Usage: ./main.sh <repo_path>"
-    echo "Usage: ./main.sh <repo_path> --debug"
+    echo "Usage:"
+    echo "      Option 1: ./main.sh <repo_path>"
+    echo "      Option 2: ./main.sh <repo_path> --no-checkout"
     exit 1
 }
 
 set -e # exit on error
 
-# consider using getopts
-# but might be an overkill for this simple usecase
 REPO_DIR=$1
-DEBUG=$2
+NO_CHECKOUT=$2
 
-if [[ $REPO_DIR == "--debug" ]]; then
+if [[ -z $REPO_DIR ]] || [[ $REPO_DIR == "--no-checkout" ]]; then
+    echo "ERROR: First paramater must be a path to a dir, you provided \"$REPO_DIR\"" 2>&1
     print_usage_and_exit
 fi
 
-if  [[ ! -z "$DEBUG" ]] && [[ "$DEBUG" != "--debug" ]]; then
+if  [[ ! -z "$NO_CHECKOUT" ]] && [[ "$NO_CHECKOUT" != "--no-checkout" ]]; then
+    echo "ERROR: Second paramater must not be set or it must be \"--no-checkout\", you provided \"$REPO_DIR\""
     print_usage_and_exit
 fi
 
-# source /etc/os-release # (wont't work on mac)
 OS=$(uname -s)
 case $OS in 
     Linux)
@@ -66,9 +66,7 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-# in debug mode, dockerfile will copy sources into container
-# if not run from /debug folder pass PWD as REPO_PATH
-if ! [[ $DEBUG == "--debug" ]]; then
+if ! [[ $NO_CHECKOUT == "--no-checkout" ]]; then
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"
             git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR

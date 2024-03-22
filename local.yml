@@ -12,7 +12,7 @@
     - "./roles/fzf"
     # - "./roles/node"
     - "./roles/nvim"
-    # - "./roles/scripts"
+    - "./roles/scripts"
     - "./roles/tldr"
     - "./roles/tmux"
     - "./roles/unzip"

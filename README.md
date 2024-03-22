@@ -1,51 +1,33 @@
 # Usage
 
-**Bare minimum prerequisites**
+**Bare minimum prerequisites:** `sudo`,  `curl`, `git`
 
-- apt update
-- apt install sudo
-- apt install curl
-- apt install git
+## Run *
 
-**Run**
+Replace `<REPO_PATH>` with the absolut path to the desired target clone directory, e.g.: `/happypath`
 
 ```SHELL
-curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- </REPO_PATH>
+curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash -s -- <REPO_PATH>
 ```
 
 **Grab a coffee, come back and voilà, your development environment is set up and ready to use.**
 
---- 
-
-**Run again (when cloned already)**
-
-cd into </REPO_PATH>
+\* If you don't want the script to run immediately, then clone the repo, make changes to it as you like and then run within the repo folder:
 
 ```SHELL
-./main.sh $(PWD)
+./main.sh $(PWD) --no-checkout 
 ```
-
-**OR run with local changes**
-
-```SHELL
-./main.sh $(PWD) --debug 
-```
-
---debug, will not clone or update repo
---debug is mainly used for debug usecase in a docker container
-but can be used here
 
 ## For debugging
 
 - you need to have `docker` installed
 
-- cd into debug
-- run `./build_dockers.sh`
-- run `./start_dockers.sh`
+- cd into `./debug`
+- run `./build-and-run-dockers.sh`
 
-It will automatically execute `./debug/main.sh /happypath --debug`.
+It will automatically bring up a docker container and run the ansible playbook.
 
-# Something to read
+## Something to read
 
 - https://phelipetls.github.io/posts/introduction-to-ansible/
 - https://github.com/TechDufus/dotfiles/tree/main
@@ -63,13 +45,3 @@ It will automatically execute `./debug/main.sh /happypath --debug`.
 - Yabai (for mac)
 - bug.n (for windows)
 
-## Cool command to inspect processes on ubuntu
-
-execute: `zsh`\
-execute: `ps -o pid,ppid= -C zsh`\
-execute: `zsh`\
-execute: `ps -o pid,ppid= -C zsh`\
-execute: `exit`\
-execute: `ps -o pid,ppid= -C zsh`\
-execute: `exit`\
-execute: `ps -o pid,ppid= -C zsh`
