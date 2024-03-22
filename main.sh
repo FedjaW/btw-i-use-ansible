@@ -2,7 +2,7 @@
 
 # Author: Friedrich
 # Date Created: 20.3.2024
-# Date Modified: 21.3.2024
+# Date Modified: 22.3.2024
 # Weather: Dear future me, today (20.3.2024) is a wonderful
 # day to work on such a beautiful script that will help me
 # to setup my furure notebooks with one command.
@@ -16,13 +16,10 @@
 
 # Usage:
 # ./main.sh
-# ./main.sh <REPO_PATH_TO_CLONE_INTO>
-
-REPO_PATH=$1
 
 function ubuntu_setup() {
     echo "Check if Ansible is installed"
-    if ! dpkg -s ansible >/dev/null 2>&1; then
+    if ! dpkg -s ansible &>/dev/null; then
         echo "Installing ansible"
         sudo apt update
         sudo apt install --yes software-properties-common
@@ -50,14 +47,9 @@ case $OS in
     echo "Unsupported OS"
 esac
 
-if [[ -z $REPO_PATH ]]; then
-    REPO_PATH=$(pwd)
-fi
-
-if ! [[ -d "$REPO_PATH" ]]; then
-    echo "Cloning repository into $REPO_PATH"
-    git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_PATH
-fi
+repopath=$(pwd)
+echo "Cloning repository into $repopath"
+git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $repopath 2>/dev/null
 
 echo "Running playbook"
 ansible-playbook "$REPO_PATH/local.yml" -K
