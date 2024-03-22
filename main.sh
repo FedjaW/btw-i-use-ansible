@@ -49,8 +49,10 @@ case $OS in
     echo "Unsupported OS"
 esac
 
+echo repodir 1
+echo $REPO_DIR
 if [[ -z $REPO_DIR ]]; then
-    echo repodir
+    echo repodir 2
     echo $REPO_DIR
     REPO_DIR=$(pwd)
 fi
