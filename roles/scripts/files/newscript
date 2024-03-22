@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author: Friedrich Wilms
+# Author: Friedrich
 # Date Created: 5.2.2024
 # Date Modified: 5.2.2024
 
@@ -8,13 +8,12 @@
 # Crates a new shell script template 
 
 # Usage:
-# ./newscript.sh filename
+# newscript filename
 
-if [ -z $1 ]
-then
-        echo "Wrong usage: Provide a filename"
-        echo "Example usage: ./new_script.sh example_filename"
-        exit 1
+if [ -z $1 ]; then
+	echo "Wrong usage: Provide a filename"
+    echo "Example usage: new_script example_filename"
+    exit 1
 fi
 
 filename=$1.sh
@@ -22,7 +21,7 @@ today=$(date +%d.%m.%Y\ %H:%M)
 
 echo "#!/bin/bash" >> $filename
 echo "" >> $filename
-echo "# Author: Friedrich Wilms ($USER)" >> $filename
+echo "# Author: Friedrich ($USER)" >> $filename
 echo "# Created: $today" >> $filename
 echo "# Last modified: $today" >> $filename
 echo "" >> $filename

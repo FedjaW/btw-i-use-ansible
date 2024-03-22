@@ -12,9 +12,9 @@
   become_user: root
   shell: |
     cd /usr/local/bin && 
-    chmod +x ./backup.sh &&
-    chmod +x ./birthday.sh &&
-    chmod +x ./loggy.sh &&
-    chmod +x ./newscript.sh
+    chmod +x ./backup &&
+    chmod +x ./birthday &&
+    chmod +x ./loggy &&
+    chmod +x ./newscript
   tags:
     - scripts

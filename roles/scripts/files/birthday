@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author: Friedrich Wilms
+# Author: Friedrich
 # Date Created: 05.2.2024
 # Date Modified: 15.2.2024
 
@@ -8,7 +8,7 @@
 # Checks the list below for a birthday today - prints it to the console
 
 # Usage:
-# ./birthday
+# birthday
 
 birthdays="
 Alex-Fink_06.11				\

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Author: Friedrich Wilms
+# Author: Friedrich
 # Date Created: 5.2.24
 # Date Modified: 5.2.24
 
@@ -8,7 +8,7 @@
 # Logs the provided message with a timestamp
 
 # Usage:
-# lagger "here comes your message"
+# loggy "here comes your message"
 
 echo `date +'%F %T'` $* >> `date +%F`.log
 
