@@ -11,7 +11,7 @@ FROM base as final
 WORKDIR /happypath
 COPY ./ ./
 RUN ["chmod", "+x", "/happypath/main.sh"]
-CMD ["sh", "-c", "/happypath/main.sh /happypath --no-checkout; bash"]
+CMD ["sh", "-c", "/happypath/main.sh; bash"]
 
 # print the CMD of an existing image
 # docker inspect -f '{{.Config.Cmd}}' <image:tag>

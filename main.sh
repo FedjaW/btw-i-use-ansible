@@ -15,10 +15,13 @@
 # Supports MacOSX and Ubuntu.
 
 # Usage:
-# ./main.sh <REPO_PATH_TO_CLONE_TO>
-# ./main.sh <REPO_PATH_TO_CLONE_TO> --no-checkout
+# ./main.sh
+# ./main.sh <REPO_PATH_TO_CLONE_INTO>
+
+REPO_DIR=$1
 
 function ubuntu_setup() {
+    echo "Check if Ansible is installed"
     if ! dpkg -s ansible >/dev/null 2>&1; then
         echo "Installing ansible"
         sudo apt update
@@ -29,43 +32,33 @@ function ubuntu_setup() {
 }
 
 function mac_setup() {
-    brew install ansible
-}
-
-function print_usage_and_exit() {
-    echo "Usage:"
-    echo "      Option 1: ./main.sh <repo_path>"
-    echo "      Option 2: ./main.sh <repo_path> --no-checkout"
-    exit 1
+    echo "Check if Ansible is installed"
+    brew list | grep ansible &>/dev/null || echo "Installing ansible" || brew install ansible
 }
 
 set -e # exit on error
 
-REPO_DIR=$1
-
 OS=$(uname -s)
 case $OS in 
     Linux)
-        # ubuntu_setup
+        ubuntu_setup
         ;;
     Darwin)
-        # mac_setup
+        mac_setup
         ;;
     *)
     echo "Unsupported OS"
 esac
 
-if find $REPO_DIR/local.yml >/dev/null 2>&1; then
-    echo "FOUND $REPO_DIR/local.yml"
-    if ! [[ -d "$REPO_DIR" ]]; then
-            echo "Cloning repository into $REPO_DIR"
-            # git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
-    else 
-        echo "Updating repository"
-        # git -C $REPO_DIR pull --quiet 
-    fi
+if [[ -z $REPO_DIR ]]; then
+    REPO_DIR=$(pwd)
 fi
 
-echo "Running playbook..."
-# ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
+if ! [[ -d "$REPO_DIR" ]]; then
+    echo "Cloning repository into $REPO_DIR"
+    git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
+fi
+
+echo "Running playbook"
+ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
 echo "Playbook done"

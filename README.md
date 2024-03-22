@@ -1,6 +1,23 @@
-# Usage
+# Description
 
-**Bare minimum prerequisites:** `sudo`,  `curl`, `git`
+This repo contains an ansible playbook for fully automated setup of a development environment.
+
+# Prerequisites 
+
+This ansible playbook supports `MacOSX` and `Ubunug`.
+
+The bare minimum you need to have on your system is `sudo`, `git`, `curl`
+
+Make sure you have the latest packages installed:
+
+```
+# MaxOSX
+brew update && brew upgrade
+# Ubuntu
+sudo apt-get update && sudo apt-get upgrade -y
+```
+
+# Usage
 
 ## Run *
 
@@ -15,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.
 \* If you don't want the script to run immediately, then clone the repo, make changes to it as you like and then run within the repo folder:
 
 ```SHELL
-./main.sh $(PWD) --no-checkout 
+./main.sh
 ```
 
 ## For debugging
