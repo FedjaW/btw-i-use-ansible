@@ -50,6 +50,8 @@ case $OS in
 esac
 
 if [[ -z $REPO_DIR ]]; then
+    echo repodir
+    echo $REPO_DIR
     REPO_DIR=$(pwd)
 fi
 
