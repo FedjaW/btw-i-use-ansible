@@ -24,7 +24,8 @@
     state: absent
     path: ~/.zshrc
 
-- name: Symlink .zhrc
+# TODO: use role_path
+- name: Create symlink for .zhrc
   ansible.builtin.file:
     src: "{{ repo_dir }}/roles/zsh/files/.zshrc"
     dest: "$HOME/.zshrc"

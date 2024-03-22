@@ -1,7 +1,7 @@
 - name: Create symlinks for scripts
   ansible.builtin.file:
     src: "{{ item }}"
-    dest: "/usr/local/bin/{{ item | basename }}"
+    dest: "/usr/local/bin/{{ item | basename }}" # makes script globally executable
     state: link
     force: true
     mode: u=rwx,g=rwx,o=rwx
