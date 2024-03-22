@@ -1,20 +1,9 @@
-- name: Copy scripts into /usr/local/bin
-  become: true
-  become_user: root
-  ansible.builtin.copy:
-    src: files/
-    dest: /usr/local/bin
-  tags:
-    - scripts
-
-- name: Give scripts execute permissions
-  become: true
-  become_user: root
-  shell: |
-    cd /usr/local/bin && 
-    chmod +x ./backup &&
-    chmod +x ./birthday &&
-    chmod +x ./loggy &&
-    chmod +x ./newscript
-  tags:
-    - scripts
+- name: Create symlinks for scripts
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "/usr/local/bin/{{ item | basename }}"
+    state: link
+    force: true
+    mode: u=rwx,g=rwx,o=rwx
+  with_fileglob:
+    - "{{ role_path }}/files/*"
