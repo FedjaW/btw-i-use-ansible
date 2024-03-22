@@ -18,6 +18,7 @@
 # ./main.sh
 
 REPO_DIR=$1
+echo debugging
 
 function ubuntu_setup() {
     echo "Check if Ansible is installed"
@@ -40,19 +41,19 @@ set -e # exit on error
 OS=$(uname -s)
 case $OS in 
     Linux)
-        ubuntu_setup
+        # ubuntu_setup
         ;;
     Darwin)
-        mac_setup
+        # mac_setup
         ;;
     *)
     echo "Unsupported OS"
 esac
 
-echo repodir 1
+echo repodir1
 echo $REPO_DIR
 if [[ -z $REPO_DIR ]]; then
-    echo repodir 2
+    echo repodir2
     echo $REPO_DIR
     REPO_DIR=$(pwd)
 fi
@@ -63,5 +64,5 @@ if ! [[ -d "$REPO_DIR" ]]; then
 fi
 
 echo "Running playbook"
-ansible-playbook "$REPO_DIR/local.yml" -K
+# ansible-playbook "$REPO_DIR/local.yml" -K
 echo "Playbook done"
