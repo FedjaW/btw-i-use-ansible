@@ -19,7 +19,7 @@
 # ./main.sh <REPO_PATH_TO_CLONE_TO> --no-checkout
 
 function ubuntu_setup() {
-    if ! dpkg -s ansible >/dev/null 2>&1; then
+    if ! dpkg -s ansible 2>/dev/null 1>/dev/null; then
         echo "Installing ansible"
         sudo apt update
         sudo apt install --yes software-properties-common
@@ -42,30 +42,40 @@ function print_usage_and_exit() {
 set -e # exit on error
 
 REPO_DIR=$1
+NO_CHECKOUT=$2
+
+if [[ -z $REPO_DIR ]] || [[ $REPO_DIR == "--no-checkout" ]]; then
+    echo "ERROR: First paramater must be a path to a dir, you provided \"$REPO_DIR\"" 2>&1
+    print_usage_and_exit
+fi
+
+if  [[ ! -z "$NO_CHECKOUT" ]] && [[ "$NO_CHECKOUT" != "--no-checkout" ]]; then
+    echo "ERROR: Second paramater must not be set or it must be \"--no-checkout\", you provided \"$REPO_DIR\""
+    print_usage_and_exit
+fi
 
 OS=$(uname -s)
 case $OS in 
     Linux)
-        # ubuntu_setup
+        ubuntu_setup
         ;;
     Darwin)
-        # mac_setup
+        mac_setup
         ;;
     *)
     echo "Unsupported OS"
 esac
 
-if find $REPO_DIR/local.yml >/dev/null 2>&1; then
-    echo "FOUND $REPO_DIR/local.yml"
+if ! [[ $NO_CHECKOUT == "--no-checkout" ]]; then
     if ! [[ -d "$REPO_DIR" ]]; then
             echo "Cloning repository into $REPO_DIR"
-            # git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
+            git clone --quiet --filter=blob:none https://github.com/FedjaW/btw-i-use-ansible.git $REPO_DIR
     else 
         echo "Updating repository"
-        # git -C $REPO_DIR pull --quiet 
+        git -C $REPO_DIR pull --quiet 
     fi
 fi
 
 echo "Running playbook..."
-# ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
+ansible-playbook "$REPO_DIR/local.yml" -K --extra-vars "repo_dir=$REPO_DIR"
 echo "Playbook done"
