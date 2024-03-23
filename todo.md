@@ -9,5 +9,3 @@
 
 - [ ] get rid of the [y/n] stops at ansible install
 - [ ] make tmux-sessionizer create a session if no server run
-- [ ] add dotnet task
-- [ ] setup lsp for go
