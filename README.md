@@ -23,7 +23,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 
 ```SHELL
-# Clones repo into $HOME/btw-i-use-ansible and runs ansible playbook
+# Clones repo into ./btw-i-use-ansible and runs ansible playbook
 curl -fsSL https://raw.githubusercontent.com/FedjaW/btw-i-use-ansible/main/main.sh | bash
 ```
 
