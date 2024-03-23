@@ -12,7 +12,7 @@
 # installs ansible and runs the playbook to
 # automatically setup dotfiles
 # and dev environment on a fresh machine from scratch.
-# Supports MacOSX and Ubuntu.
+# Supports MacOSX and Ubuntu only.
 
 # Usage:
 # ./main.sh
@@ -38,32 +38,25 @@ set -e # exit on error
 OS=$(uname -s)
 case $OS in 
     Linux)
-        # ubuntu_setup
+        ubuntu_setup
         ;;
     Darwin)
-        # mac_setup
+        mac_setup
         ;;
     *)
     echo "Unsupported OS"
 esac
 
-repository_name=btw-i-use-ansible
-current_dirname=$(basename "$PWD")
+REPOSITORY_NAME=btw-i-use-ansible # do not change this one!
+CURRENT_DIRNAME=$(basename "$PWD") # e.g.: /my/dir/foo -> foo
 
-echo "current_dirname is $current_dirname"
-
-if [[ $current_dirname == $repository_name ]]; then
-    checkout_path=$(pwd) # checkout path exists -> not clone
-    echo '$current_dirname == $repository_name match'
-    echo "checkout path is $checkout_path"
+if [[ $CURRENT_DIRNAME == $REPOSITORY_NAME ]]; then
+    # meaning main.sh is executed in existing repo
+    checkout_path=$(pwd)
 else
-    echo '$current_dirname == $repository_name did NOT match'
-    checkout_path=$(pwd)/$repository_name # -> clone
-    echo "checkout path is $checkout_path"
-
+    checkout_path=$(pwd)/$REPOSITORY_NAME
     echo "Cloning repository into $checkout_path"
-    git clone --filter=blob:none https://github.com/FedjaW/${repository_name}.git
-
+    git clone --filter=blob:none https://github.com/FedjaW/${REPOSITORY_NAME}.git
 fi
 
 echo "Running playbook"

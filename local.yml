@@ -18,6 +18,5 @@
     # - "./roles/unzip"
     # - "./roles/zsh"
 
-#_________________________
-# Dendencies:
-# tmux (scripts) need fzf
+# Dependencies between roles:
+# tmux (scripts) needs fzf
