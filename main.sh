@@ -2,10 +2,10 @@
 
 # Author: Friedrich
 # Date Created: 20.3.2024
-# Date Modified: 21.3.2024
+# Date Modified: 23.3.2024
 # Weather: Dear future me, today (20.3.2024) is a wonderful
 # day to work on such a beautiful script that will help me
-# to setup my furure notebooks with one command.
+# to setup my future machines with one command.
 
 # Description:
 # Pulls my "btw-i-use-ansible" repo,
@@ -49,15 +49,21 @@ esac
 
 repository_name=btw-i-use-ansible
 current_dirname=$(basename "$PWD")
-if [[ $current_dirname == $repository_name ]]; then
-    checkout_path=$(pwd)
-else
-    checkout_path=$(pwd)/$repository_name
-fi
 
-if ! [[ -d "$checkout_path" ]]; then
+echo "current_dirname is $current_dirname"
+
+if [[ $current_dirname == $repository_name ]]; then
+    checkout_path=$(pwd) # checkout path exists -> not clone
+    echo '$current_dirname == $repository_name match'
+    echo "checkout path is $checkout_path"
+else
+    echo '$current_dirname == $repository_name did NOT match'
+    checkout_path=$(pwd)/$repository_name # -> clone
+    echo "checkout path is $checkout_path"
+
     echo "Cloning repository into $checkout_path"
     git clone --filter=blob:none https://github.com/FedjaW/${repository_name}.git
+
 fi
 
 echo "Running playbook"
