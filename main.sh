@@ -52,9 +52,9 @@ CURRENT_DIRNAME=$(basename "$PWD") # e.g.: /my/dir/foo -> foo
 
 if [[ $CURRENT_DIRNAME == $REPOSITORY_NAME ]]; then
     # meaning main.sh is executed in already cloned repo
-    repository_path=$(pwd)
+    repository_path=$PWD
 else
-    repository_path=$(pwd)/$REPOSITORY_NAME
+    repository_path=$PWD/$REPOSITORY_NAME
     echo "Cloning repository into $repository_path"
     git clone --filter=blob:none https://github.com/FedjaW/${REPOSITORY_NAME}.git
 fi
