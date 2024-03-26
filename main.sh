@@ -30,7 +30,7 @@ function ubuntu_setup() {
 
 function mac_setup() {
     echo "Check if Ansible is installed"
-    brew list | grep ansible &>/dev/null || echo "Installing ansible" || brew install ansible
+    brew list | grep ansible &>/dev/null || echo "Installing ansible" && brew install ansible
 }
 
 set -e # exit on error
