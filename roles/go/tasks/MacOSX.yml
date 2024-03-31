@@ -1,0 +1,5 @@
+- name: "Install go for {{ ansible_distribution }}"
+  become_user: fedjabilms
+  homebrew:
+    name: go
+    state: present

@@ -1,0 +1,2 @@
+- name: Install go
+  include_tasks: "{{ ansible_distribution }}.yml"

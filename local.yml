@@ -10,12 +10,14 @@
   roles:
     - "./roles/curl"
     - "./roles/fzf"
+    - "./roles/go"
     # - "./roles/node"
     - "./roles/nvim"
     - "./roles/scripts"
     - "./roles/tldr"
     - "./roles/tmux"
     - "./roles/unzip"
+    - "./roles/zoxide"
     - "./roles/zsh"
 
 # Dependencies between roles:

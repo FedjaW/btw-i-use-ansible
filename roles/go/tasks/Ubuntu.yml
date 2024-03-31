@@ -1,0 +1,2 @@
+- name: "Install go for {{ ansible_distribution }}"
+  apt: name=golang
