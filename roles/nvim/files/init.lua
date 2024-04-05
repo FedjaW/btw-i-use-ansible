@@ -154,6 +154,11 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -539,7 +544,26 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
+        omnisharp = {
+          handlers = {
+            ['textDocument/definition'] = function(...)
+              return require('omnisharp_extended').handler(...)
+            end,
+          },
+          keys = {
+            {
+              'gd',
+              function()
+                require('omnisharp_extended').telescope_lsp_definitions()
+              end,
+              desc = 'Goto Definition',
+            },
+          },
+          enable_roslyn_analyzers = true,
+          organize_imports_on_format = true,
+          enable_import_completion = true,
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs

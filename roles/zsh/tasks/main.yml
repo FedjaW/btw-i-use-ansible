@@ -31,7 +31,7 @@
     state: link
     force: true
   become: true
-  become_user: root
+  become_user: root # todo: change to fwilms or run in shell "sudo su -"
 
 - name: Install autosuggestions
   ansible.builtin.git:

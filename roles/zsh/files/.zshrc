@@ -7,4 +7,6 @@ alias vim=nvim
 source $ZSH/oh-my-zsh.sh
 eval "$(zoxide init zsh)"
 
+export PATH=$PATH:/usr/local/go/bin
+
 echo "Hi Friedrich, happy hacking..."
