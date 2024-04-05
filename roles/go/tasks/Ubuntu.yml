@@ -1,2 +1,52 @@
-- name: "Install go for {{ ansible_distribution }}"
-  apt: name=golang
+- name: "Go-Lang | Remove any current Go installations"
+  ansible.builtin.file:
+    path: /usr/local/go
+    state: absent
+
+- name: "Go-Lang | Install Go"
+  ansible.builtin.unarchive:
+    src: https://golang.org/dl/go1.22.2.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+# -----------------------------------------------------------
+# Alternative approach - Step by Step - might be better
+# -----------------------------------------------------------
+# - name: "Go-Lang | Ensure clean download destination"
+#   ansible.builtin.file:
+#     path: "/tmp/go1.22.2.linux-amd64.tar.gz"
+#     state: absent
+#   become: true
+
+# - name: "Go-Lang | Downloading GoLang Release"
+#   ansible.builtin.get_url:
+#     url: "https://golang.org/dl/go1.22.2.linux-amd64.tar.gz"
+#     dest: /tmp/
+#     mode: 0644
+#     force: true
+
+# - name: "Go-Lang | Ensure clean extraction destination"
+#   ansible.builtin.file:
+#     path: "/tmp/go"
+#     state: absent
+#   become: true
+
+# - name: "Go-Lang | Extract go tar file"
+#   ansible.builtin.unarchive:
+#     src: "/tmp/go1.22.2.linux-amd64.tar.gz"
+#     dest: /tmp
+
+# - name: "Go-Lang | Remove any current Go installations"
+#   ansible.builtin.file:
+#     path: /usr/local/go
+#     state: absent
+#   become: true
+
+# - name: "Go-Lang | Install Go"
+#   ansible.builtin.copy:
+#     remote_src: true
+#     src: /tmp/go
+#     dest: /usr/local/
+#     mode: "0644"
+#     force: true
+#   become: true
+#   become_user: root

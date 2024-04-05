@@ -1,4 +1,4 @@
-# TODO: check "sudo rm -rf /opt/nvim", it is installed into "/opt/nvim-linux64" on mac 
+# TODO: check "sudo rm -rf /opt/nvim", it is installed into "/opt/nvim-linux64" on mac
 - name: Download and install Neovim
   become: true
   become_user: root
@@ -11,7 +11,7 @@
   ansible.builtin.file:
     path: "$HOME/.config/nvim"
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: Create symlink for nvim config
   become: true
