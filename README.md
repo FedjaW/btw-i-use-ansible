@@ -2,7 +2,7 @@
 
 This repo contains an ansible playbook for fully automated setup of a development environment.
 
-# Prerequisites 
+# Prerequisites
 
 This ansible playbook supports `MacOSX` and `Ubunug`.
 
@@ -19,8 +19,9 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Usage
 
-## Run
+Currently I have set my username throughout the project. Change this by find and replace to your needs.
 
+## Run
 
 ```SHELL
 # Clones repo into ./btw-i-use-ansible and runs ansible playbook

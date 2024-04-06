@@ -1,0 +1,2 @@
+- name: "Install build-essential for {{ ansible_distribution }}"
+  apt: name=build-essential

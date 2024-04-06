@@ -1,23 +1,33 @@
 - name: Install zsh
   include_tasks: "{{ ansible_distribution }}.yml"
 
-- name: Change shell
-  shell: chsh -s `which zsh`
-
 - name: Delete ohmyzsh
   ansible.builtin.file:
     state: absent
     path: ~/.oh-my-zsh
+  become: true
+  become_user: fwilms
+
+- name: Create tmp directory if it does not exist
+  ansible.builtin.file:
+    path: $HOME/tmp/
+    state: directory
+  become: true
+  become_user: fwilms
 
 - name: Download Oh My Zsh installation script
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install_ohmyzsh.sh
+    dest: $HOME/tmp/install_ohmyzsh.sh
+  become: yes
+  become_user: fwilms
 
 - name: Run Oh My Zsh installation script
-  command: sh /tmp/install_ohmyzsh.sh --unattended
+  command: sh $HOME/tmp/install_ohmyzsh.sh --unattended
   register: ohmyzsh_result
   failed_when: "'FAILED' in ohmyzsh_result.stderr"
+  become: yes
+  become_user: fwilms
 
 - name: Delete .zhrc
   ansible.builtin.file:
@@ -31,9 +41,16 @@
     state: link
     force: true
   become: true
-  become_user: root # todo: change to fwilms or run in shell "sudo su -"
+  become_user: fwilms
 
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"
+  become: true
+  become_user: fwilms
+
+- name: change user shell to zsh
+  user:
+    name: fwilms
+    shell: /bin/zsh

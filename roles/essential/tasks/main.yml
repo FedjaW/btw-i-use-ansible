@@ -1,0 +1,3 @@
+# Needed for lazyvim to work correctly
+- name: Install build-essential
+  include_tasks: "{{ ansible_distribution }}.yml"
