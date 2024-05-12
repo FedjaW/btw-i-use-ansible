@@ -13,7 +13,7 @@
   become_user: fedjaw
 
 - name: Run zoxide installation script
-  command: sh $HOME/tmp/install_zoxide.sh --unattended
+  command: sh $HOME/tmp/install_zoxide.sh --unattended --bin-dir $HOME/.local/bin
   register: zoxide_result
   failed_when: "'FAILED' in zoxide_result.stderr"
   become: true

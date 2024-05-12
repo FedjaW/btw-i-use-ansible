@@ -17,7 +17,7 @@
     - "./roles/nvim"
     - "./roles/scripts"
     - "./roles/tldr"
-    - "./roles/tmux"
+     "./roles/tmux"
     - "./roles/unzip"
     - "./roles/zoxide"
     - "./roles/zsh"
