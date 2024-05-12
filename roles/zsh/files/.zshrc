@@ -12,7 +12,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 alias vim=nvim
 
 # zoxdide
-export PATH="/home/fwilms/.local/bin:$PATH"
+export PATH="/home/fedjaw/.local/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 # go

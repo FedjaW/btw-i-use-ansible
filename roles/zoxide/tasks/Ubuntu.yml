@@ -3,18 +3,18 @@
     path: $HOME/tmp/
     state: directory
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Download zoxide installation script
   get_url:
     url: https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh
     dest: $HOME/tmp/install_zoxide.sh
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Run zoxide installation script
   command: sh $HOME/tmp/install_zoxide.sh --unattended
   register: zoxide_result
   failed_when: "'FAILED' in zoxide_result.stderr"
   become: true
-  become_user: fwilms
+  become_user: fedjaw

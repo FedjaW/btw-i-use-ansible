@@ -1,0 +1,2 @@
+- name: "Install dotnet for {{ ansible_distribution }}"
+  apt: name=dotnet-sdk-8.0

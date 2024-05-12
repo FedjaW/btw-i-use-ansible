@@ -5,7 +5,7 @@
     sudo rm -rf /opt/nvim
     sudo tar -C /opt -xzf nvim-linux64.tar.gz
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Create directory ~/.config/nvim if it does not exist
   ansible.builtin.file:
@@ -13,7 +13,7 @@
     state: directory
     mode: "0755"
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Create symlink for nvim config
   ansible.builtin.file:
@@ -22,4 +22,4 @@
     state: link
     force: true
   become: true
-  become_user: fwilms
+  become_user: fedjaw

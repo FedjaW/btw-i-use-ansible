@@ -6,28 +6,28 @@
     state: absent
     path: ~/.oh-my-zsh
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Create tmp directory if it does not exist
   ansible.builtin.file:
     path: $HOME/tmp/
     state: directory
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Download Oh My Zsh installation script
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     dest: $HOME/tmp/install_ohmyzsh.sh
   become: yes
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Run Oh My Zsh installation script
   command: sh $HOME/tmp/install_ohmyzsh.sh --unattended
   register: ohmyzsh_result
   failed_when: "'FAILED' in ohmyzsh_result.stderr"
   become: yes
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Delete .zhrc
   ansible.builtin.file:
@@ -41,16 +41,16 @@
     state: link
     force: true
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
     dest: "$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"
   become: true
-  become_user: fwilms
+  become_user: fedjaw
 
 - name: change user shell to zsh
   user:
-    name: fwilms
+    name: fedjaw
     shell: /bin/zsh

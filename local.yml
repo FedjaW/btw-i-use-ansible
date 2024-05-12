@@ -9,6 +9,7 @@
       include_tasks: pre_tasks/check_brew.yml
   roles:
     - "./roles/curl"
+    - "./roles/dotnet"
     - "./roles/essential"
     - "./roles/fzf"
     - "./roles/go"
