@@ -7,6 +7,9 @@
 - [x] remove .sh from scripts because they are global
 - [x] can i get rid of repo_dir in ansible playbook
 - [x] install sudo apt-get install build-essential
+
+- [ ] get username (whoami) and use it throughout the script/roles. Currently "fedjaw" is used
+
 - [ ] make nodejs work for mac
 - [ ] get rid of the [y/n] stops at ansible install
 - [ ] make tmux-sessionizer create a session if no server run
