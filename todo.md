@@ -1,4 +1,4 @@
-# DO IT YOU LAZY BASTARD!!!
+# DO IT YOU LAZY B****
 
 - [x] make scripts globally available via path or so
 - [x] configure vim via lua
@@ -14,7 +14,8 @@
 - [ ] get rid of the [y/n] stops at ansible install
 - [ ] make tmux-sessionizer create a session if no server run
 
->  4 Mac to add roles
+> 4 Mac to add roles
+
 - [ ] brew
 - [ ] vscode
 - [ ] keepassxc
