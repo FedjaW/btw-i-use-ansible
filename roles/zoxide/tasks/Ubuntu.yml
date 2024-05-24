@@ -12,6 +12,13 @@
   become: true
   become_user: fedjaw
 
+- name: Create .local directory if it does not exist
+  ansible.builtin.file:
+    path: $HOME/.local/bin/
+    state: directory
+  become: true
+  become_user: fedjaw
+
 - name: Run zoxide installation script
   command: sh $HOME/tmp/install_zoxide.sh --unattended --bin-dir $HOME/.local/bin
   register: zoxide_result
