@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Author: Friedrich
 # Date Created: 5.2.2024
@@ -19,7 +19,7 @@ fi
 filename=$1.sh
 today=$(date +%d.%m.%Y\ %H:%M)
 
-echo "#!/bin/bash" >> $filename
+echo "#!/usr/bin/env bash" >> $filename
 echo "" >> $filename
 echo "# Author: Friedrich ($USER)" >> $filename
 echo "# Created: $today" >> $filename

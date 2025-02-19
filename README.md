@@ -2,7 +2,7 @@
 
 This repo contains an ansible playbook for fully automated setup of a development environment.
 
-# Prerequisites
+## Prerequisites
 
 This ansible playbook supports `MacOSX` and `Ubunug`.
 
@@ -10,18 +10,18 @@ The bare minimum you need to have on your system is `sudo`, `git`, `curl`
 
 Make sure you have the latest packages installed:
 
-```
+```shell
 # MaxOSX
 brew update && brew upgrade
 # Ubuntu
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-# Usage
+## Usage
 
 Currently I have set my username throughout the project. Change this by find and replace to your needs.
 
-## Run
+### Run
 
 ```SHELL
 # Clones repo into ./btw-i-use-ansible and runs ansible playbook
@@ -36,19 +36,19 @@ If you don't want the script to run immediately, then clone the repo, make chang
 ./main.sh
 ```
 
-## For debugging
+### For debugging
 
 - you need to have `docker` installed
 
-- cd into `./debug`
-- run `./build-and-run-dockers.sh`
+- cd into `./sandbox`
+- run `./build-and-run-docker.sh`
 
 It will automatically bring up a docker container and run the ansible playbook.
 
 ## Something to read
 
-- https://phelipetls.github.io/posts/introduction-to-ansible/
-- https://github.com/TechDufus/dotfiles/tree/main
-- https://github.com/logandonley/dotfiles
-- https://www.devas.life/effective-neovim-setup-for-web-development-towards-2024/
-- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#ansible-facts-os-family
+- <https://phelipetls.github.io/posts/introduction-to-ansible/>
+- <https://github.com/TechDufus/dotfiles/tree/main>
+- <https://github.com/logandonley/dotfiles>
+- <https://www.devas.life/effective-neovim-setup-for-web-development-towards-2024/>
+- <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#ansible-facts-os-family>

@@ -26,6 +26,7 @@
   with_fileglob:
     - "{{ role_path }}/files/tmux-sessionizer"
     - "{{ role_path }}/files/tmux-cht"
+    - "{{ role_path }}/files/ready-tmux"
 
 - name: Give tmux scripts execute permissions
   become: true
@@ -34,3 +35,4 @@
     cd /usr/local/bin && 
     chmod +x ./tmux-sessionizer && 
     chmod +x ./tmux-cht
+    chmod +x ./ready-tmux
