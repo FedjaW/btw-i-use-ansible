@@ -1,5 +1,6 @@
-* test=auto eol=lf
+* text=auto eol=lf
 *.sh text eol=lf
 *.yml text eol=lf
 *.md text eol=lf
+*.lua text eol=lf
 
