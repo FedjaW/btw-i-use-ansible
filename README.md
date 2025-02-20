@@ -4,11 +4,11 @@ This repo contains an ansible playbook for fully automated setup of a developmen
 
 ## Prerequisites
 
-This ansible playbook supports `MacOSX` and `Ubunug`.
+This ansible playbook supports `MacOSX` and `Ubuntu`.
 
 The bare minimum you need to have on your system is `sudo`, `git`, `curl`
 
-Make sure you have the latest packages installed:
+Make sure you have the latest and greatest packages installed before running the playbook:
 
 ```shell
 # MaxOSX

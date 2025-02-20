@@ -1,5 +1,0 @@
-- name: "Install zoxide for {{ ansible_distribution }}"
-  become_user: fedjabilms
-  homebrew:
-    name: zoxide
-    state: present

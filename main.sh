@@ -62,3 +62,4 @@ fi
 echo "Running playbook"
 ansible-playbook "$repository_path/local.yml" -K
 echo "Playbook done"
+

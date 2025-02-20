@@ -11,10 +11,6 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 export PATH="$PATH:/opt/nvim-linux64/bin"
 alias vim=nvim
 
-# zoxdide
-export PATH="/home/fedjaw/.local/bin:$PATH"
-eval "$(zoxide init zsh)"
-
 # go
 export PATH=$PATH:/usr/local/go/bin
 
