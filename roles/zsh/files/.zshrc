@@ -8,11 +8,22 @@ source $ZSH/oh-my-zsh.sh
 bindkey -s '^f' 'tmux-sessionizer\n'
 
 # nvim
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim=nvim
 
 # go
 export PATH=$PATH:/usr/local/go/bin
+
+# git
+alias l='ls -lah'
+alias gl='. /usr/local/bin/githelpers && pretty_git_log'
+alias gst='git status'
+alias ga='git add .'
+alias gc='git commit'
+alias gd='git diff'
+
+# general
+alias ..='cd ..'
 
 # greeting
 echo "Hi Friedrich, happy hacking..."
